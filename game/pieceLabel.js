@@ -35,14 +35,14 @@ class PieceLabel extends Object2D {
 
         renderer.fillStyle = 'black';
         renderer.font = this.fontStyle( this.maxHeight );
-        
+
         renderer.fillText( this.id, this.globalPosition.x,
             this.globalPosition.y, this.maxWidth);
         renderer.globalCompositeOperation='destination-over';
 
         // Centered position
         renderer.textAlign = 'center';
-        renderer.textBaseline = 'middle'; 
+        renderer.textBaseline = 'middle';
 
     }
     

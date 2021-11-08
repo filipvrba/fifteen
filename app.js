@@ -1,4 +1,5 @@
 import { PlayingBoard } from './game/playingBoard.js'
+import * as constants from './game/constants.js';
 
 /**
  * initRenderer
@@ -25,7 +26,7 @@ function getGlobalPosition() {
 
 const playingBoard = new PlayingBoard();
 playingBoard.position = getGlobalPosition();
-scene.add( playingBoard );
+scene.add( playingBoard, constants.BOARD );
 
 /**
  * Resize window

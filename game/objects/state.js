@@ -20,6 +20,16 @@ class State extends BasicObject {
 
     }
 
+    getPieceClicked() {
+
+        return this.pieceClicked;
+    }
+
+    getPieceLast() {
+
+        return this.pieceLast;
+    }
+
     initSolution() {
 
         for ( let i = 0; i < constants.PLAYING_BOARD_PIECES; i++ ) {
@@ -36,8 +46,6 @@ class State extends BasicObject {
         this.pieceClicked = this.parent.findChildren( id );
         this.pieceLast = this.parent.findChildren(
             constants.PLAYING_BOARD_PIECES - 1 );
-        
-        this.emitSignal({ type: 'movePieces' });
 
     }
 
