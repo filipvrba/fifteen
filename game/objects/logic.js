@@ -16,6 +16,7 @@ class Logic extends BasicObject {
         this.connect('movePieces', this.movePiecesHandler);
 
         this.add( this.state );
+
         this.matrix = this.parent.findChildren( constants.MATRIX ); // [ 0 ]
     }
 
@@ -74,13 +75,19 @@ class Logic extends BasicObject {
 
     getUpdateMatrix( lengthLoop, origID, nextID ) {
 
+        this.emitUpdateMatrix( this.state.clickPosition, this.state.sourcePosition );
         for ( let i = 0; i < lengthLoop; i++ ) {
 
-            const id_next = eval( nextID );
-            const id_orig = eval( origID )
+            const idNext = eval( nextID );
+            const idOrig = eval( origID )
 
-            console.log( id_orig, id_next );
+            this.emitUpdateMatrix( idNext, idOrig );
         }
+    }
+
+    emitUpdateMatrix( idNext, idOrig ) {
+
+        this.emitSignal({ type: constants.UPDATE_MATRIX, idNext, idOrig });
     }
 
     free() {

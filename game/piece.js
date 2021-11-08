@@ -10,7 +10,7 @@ class Piece extends Object2D {
 
         this.mass = new Vector2( constants.WIDTH_PIECE, constants.WIDTH_PIECE );
         this.isCollideMouse = false;
-
+        this.speed = 20;
     }
 
     ready() {
@@ -27,7 +27,6 @@ class Piece extends Object2D {
         }
 
         this.add(label, labelID)
-
     }
 
     draw(renderer = new CanvasRenderingContext2D()) {
@@ -39,6 +38,16 @@ class Piece extends Object2D {
         renderer.fillStyle = this.color;
         renderer.fill();
 
+    }
+
+    update( dt ) {
+
+        const solutionPosition = this.getScene()
+            .findChildren( constants.BOARD )
+            .findChildren( constants.STATE )
+            .solution[ this.id ];
+        
+        this.position.lerp( solutionPosition, this.speed * dt );
     }
 
     input( mousePos ) {

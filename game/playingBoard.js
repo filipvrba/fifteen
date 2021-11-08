@@ -21,11 +21,11 @@ class PlayingBoard extends Object2D {
 
     ready() {
 
-        this.createPieces();
-
         this.add( this.state, cons.STATE );
         this.add( this.matrix, cons.MATRIX );
-        this.add( this.logic );
+        this.add( this.logic, cons.LOGIC );
+
+        this.createPieces();
     }
 
     createPieces() {
